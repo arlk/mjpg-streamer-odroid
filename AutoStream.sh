@@ -26,6 +26,7 @@ else
 	sudo modprobe uvcvideo
 	v4l2-ctl --set-fmt-video=width=1280,height=720,pixelformat=2
 	v4l2-ctl --set-parm=24
+	v4l2-ctl -c focus_auto=0
 	sudo ./mjpg_streamer -i "./input_uvc.so -fps 24 -r 1280x720 -d /dev/video0 -n" -o "./output_http.so -w ./www -p 8090"
 
 	if [[ "$*" =~ "--startx" ]]
